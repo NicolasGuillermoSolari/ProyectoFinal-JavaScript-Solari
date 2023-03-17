@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Alquileres temporarios</title>
+
+    <style>
+      #listaDePropiedades {
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+      }
+
+      #listaDePropiedades div {
+        margin: 1rem;
+        padding: 0.5rem;
+        border: 1px solid black;
+        text-align: center;
+      }
+
+      table,
+      table tr th,
+      table tr td {
+        border: 1px solid black;
+        border-collapse: collapse;
+        padding: 0.5rem;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>ALquileres temporarios</h1>
+
+    <div id="listaDePropiedades"></div>
+
+    <table>
+      <thead>
+        <tr>
+          <th>Direcciones</th>
+          <th>Precio</th>
+          <th>Cantidad</th>
+          <th>Acciones</th>
+        </tr>
+      </thead>
+
+      <tbody id="tbodyCarrito"></tbody>
+    </table>
+
+    <h2><strong>TOTAL:</strong> <span id="total"></span></h2>
+
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="js/main.js"></script>
+  </body>
+</html>

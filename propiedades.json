@@ -1,0 +1,22 @@
+[
+  {
+    "direccion": "Av.Libertador 6300",
+    "precio": 1500,
+    "stock": 12
+  },
+  {
+    "direccion": "Guatemala 5000",
+    "precio": 750,
+    "stock": 6
+  },
+  {
+    "direccion": "PAraguay 2300",
+    "precio": 1200,
+    "stock": 3
+  },
+  {
+    "direccion": "Acoyte 400",
+    "precio": 900,
+    "stock": 7
+  }
+]

@@ -32,8 +32,7 @@ function calcularTotal() {
     return acumulador + propiedadCarrito.cantidad * propiedadCarrito.precio;
   }, 0);
 
-  // Seteo el total al span
-  spanTotal.innerHTML = `$${total}`;
+  spanTotal.innerHTML = `U$s${total}`;
 }
 
 function eliminarPropiedad(propiedadAEliminar) {
@@ -71,7 +70,7 @@ function renderizarCarrito() {
     const btnEliminarPropiedad = document.createElement("button");
     btnEliminarPropiedad.innerText = "Eliminar";
 
-    // Creamos el evento cuando se quiera eliminar un producto
+    // eliminar propiedad del carrito
     btnEliminarPropiedad.addEventListener("click", () => {
       eliminarPropiedad(propiedadCarrito);
     });
@@ -81,11 +80,10 @@ function renderizarCarrito() {
     // Agrego los td al tr
     tr.append(tdDireccion, tdPrecio, tdCantidad, tdAcciones);
 
-    // Agrego el tr al tbody
     tbodyCarrito.append(tr);
   }
 
-  // Calcular total
+  // Calcular monto total
   calcularTotal();
 }
 
@@ -94,15 +92,14 @@ function propiedadTieneStock(propiedadAAgregar) {
 }
 
 function agregarPropiedadAlCarrito(propiedadAAgregar) {
-  // Buscamos si existe el producto en el carrito
+  // Buscamos si existe en el carrito la propiedad
   const indicePropiedadEncontrado = carrito.findIndex(
     (propiedadCarrito) =>
       propiedadCarrito.direccion === propiedadAAgregar.direccion
   );
 
-  // Si no existe, lo agregamos
   if (indicePropiedadEncontrado === -1) {
-    // Agrego el producto al carrito
+    // Agrego la propiedad al carrito
     carrito.push(
       new PropiedadCarrito(
         propiedadAAgregar.direccion,
@@ -110,17 +107,14 @@ function agregarPropiedadAlCarrito(propiedadAAgregar) {
       )
     );
 
-    // Descuento stock del producto
+    // Resto del stock
     propiedadAAgregar.descontarStock();
   } else {
-    // Si el producto existe en el carrito
+    // Si la propiedad existe en el carrito, vemos si hay en stock
 
-    // Chequeamos si el producto tiene stock
     if (propiedadTieneStock(propiedadAAgregar)) {
-      // Le sumo uno a la cantidad
       carrito[indicePropiedadEncontrado].sumarCantidad();
 
-      // Descuento stock del producto
       propiedadAAgregar.descontarStock();
     } else {
       Swal.fire({
@@ -137,37 +131,35 @@ function agregarPropiedadAlCarrito(propiedadAAgregar) {
 }
 
 function renderizarListaDePropiedades() {
-  // Limpiar la lista de productos
+  // Limpiar la lista de propiedades
   divListaDePropiedades.innerHTML = "";
 
-  // Recorro la lista de productos
+  // Recorro la lista de propiedades
   for (const propiedadDeLista of propiedades) {
-    // Crear div del producto
     const div = document.createElement("div");
 
-    // Creo el título del producto
+    // pongo el nombre de la propiedad
     const direccion = document.createElement("h3");
     direccion.innerText = propiedadDeLista.direccion;
 
-    // Creo el precio
+    // pongo el precio
     const precio = document.createElement("h4");
     precio.innerText = `U$s${propiedadDeLista.precio}`;
 
-    // Creo el stock
+    // pongo el stock
     const stock = document.createElement("h4");
     stock.innerText = `Semanas: ${propiedadDeLista.stock}`;
 
-    // Creo el botón
+    // hago el botón
     const btnAgregarAlCarrito = document.createElement("button");
     btnAgregarAlCarrito.innerText = "Agregar al carrito";
 
-    // Creo el evento para agregar el producto al carrito
+    // Creo el evento para agregar la propiedad al carrito
     btnAgregarAlCarrito.addEventListener("click", () => {
-      // Agregar producto al carrito
+      // Agrego una propiedad al carrito
       agregarPropiedadAlCarrito(propiedadDeLista);
     });
 
-    // Agrego al div todos los elementos
     div.append(direccion, precio, stock, btnAgregarAlCarrito);
 
     // Agrego el div a la lista
@@ -175,7 +167,7 @@ function renderizarListaDePropiedades() {
   }
 }
 
-//traigo del JSON los productos para usarlos como objetos
+//Saco del JSON las propiedades
 function obtenerPropiedadesDelJSON() {
   fetch("/propiedades.json")
     .then((response) => {

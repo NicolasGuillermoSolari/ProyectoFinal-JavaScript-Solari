@@ -37,18 +37,16 @@ function calcularTotal() {
 }
 
 function eliminarPropiedad(propiedadAEliminar) {
-  // Buscamos si existe el producto en el carrito
+  // Busca si hay propiedades en el carrito
   const indicePropiedadEncontrado = carrito.findIndex(
     (propiedadCarrito) =>
       propiedadCarrito.direccion === propiedadAEliminar.direccion
   );
 
   if (indicePropiedadEncontrado !== -1) {
-    // Eliminamos el producto
+    // Eliminamos la propiedad
     carrito.splice(indicePropiedadEncontrado, 1);
   }
-
-  // Renderizamos el carrito
   renderizarCarrito();
 }
 
@@ -57,7 +55,7 @@ function renderizarCarrito() {
   tbodyCarrito.innerHTML = "";
 
   for (const propiedadCarrito of carrito) {
-    // Creo el tr
+    // tr de la tabla
     const tr = document.createElement("tr");
 
     const tdDireccion = document.createElement("td");
@@ -153,11 +151,11 @@ function renderizarListaDePropiedades() {
 
     // Creo el precio
     const precio = document.createElement("h4");
-    precio.innerText = `$${propiedadDeLista.precio}`;
+    precio.innerText = `U$s${propiedadDeLista.precio}`;
 
     // Creo el stock
     const stock = document.createElement("h4");
-    stock.innerText = `Stock: ${propiedadDeLista.stock}`;
+    stock.innerText = `Semanas: ${propiedadDeLista.stock}`;
 
     // Creo el botón
     const btnAgregarAlCarrito = document.createElement("button");
@@ -197,30 +195,9 @@ function obtenerPropiedadesDelJSON() {
       renderizarListaDePropiedades();
     });
 }
+// INICIO DEL PROGRAMA
 
-/*
-function obtenerProductosDelJSON() {
-  fetch("/productos.json")
-    .then((Response) => {
-      return Response.json();
-    })
-    .then((productosJSON) => {
-      for (const productoJSON of productosJSON) {
-        productoJSON.push(
-          new productoJSON(
-            productoJSON.nombre,
-            productoJSON.precio,
-            productoJSON.stock
-          )
-        );
-      }
-*/
-
-/**
- * INICIO DEL PROGRAMA
- */
-
-const divListaDePropiedades = document.getElementById("listaDeProductos");
+const divListaDePropiedades = document.getElementById("listaDePropiedades");
 const tbodyCarrito = document.getElementById("tbodyCarrito");
 const spanTotal = document.getElementById("total");
 let propiedades = [];

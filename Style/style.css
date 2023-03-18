@@ -1,0 +1,60 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  font-family: "montserrat", sans-serif;
+}
+
+.logo {
+  height: 180px;
+  grid-area: img;
+}
+.logo_icono {
+  height: 220px;
+}
+header {
+  background-color: #630c43;
+  padding: 0.5rem;
+  display: flex;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+}
+.texto_logo {
+  display: flex;
+  justify-content: flex-start;
+}
+h1 {
+  color: aliceblue;
+  display: flex;
+  justify-content: flex-start;
+}
+p {
+  color: aliceblue;
+  display: flex;
+  justify-content: flex-start;
+}
+#listaDePropiedades {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+#listaDePropiedades div {
+  margin: 1.5rem;
+  padding: 0.5rem;
+  border: 5px solid #630c43;
+  text-align: center;
+}
+
+table,
+table tr th,
+table tr td {
+  border: 1px solid #630c43;
+  border-collapse: collapse;
+  padding: 1.5rem;
+}
+
+h2 {
+  color: #630c43;
+}

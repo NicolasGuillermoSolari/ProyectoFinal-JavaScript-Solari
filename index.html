@@ -2,33 +2,27 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/Style/style.css" />
     <title>Alquileres temporarios</title>
-
-    <style>
-      #listaDePropiedades {
-        display: flex;
-        justify-content: center;
-        flex-wrap: wrap;
-      }
-
-      #listaDePropiedades div {
-        margin: 1rem;
-        padding: 0.5rem;
-        border: 1px solid black;
-        text-align: center;
-      }
-
-      table,
-      table tr th,
-      table tr td {
-        border: 1px solid black;
-        border-collapse: collapse;
-        padding: 0.5rem;
-      }
-    </style>
   </head>
   <body>
-    <h1>ALquileres temporarios</h1>
+    <header>
+      <div class="logo">
+        <img
+          class="logo_icono"
+          src="image/SolariPropiedades_logo1_page-0001.jpg"
+          alt="logo de Solari propiedades"
+        />
+      </div>
+      <div class="texto_logo">
+        <h1>Alquileres temporarios</h1>
+        <p>Estadias por periodos semanales</p>
+        <p>estadia mínima una semana</p>
+        <p>estadia máxima 3 meses</p>
+      </div>
+    </header>
 
     <div id="listaDePropiedades"></div>
 
